@@ -7,7 +7,7 @@ namespace Grocer.Pages
     public class DetailsModel : PageModel
     {
         public List<GroceryItem> Foods = Inventory.ToList();
-        public GroceryItem CurrentFood;
+        public GroceryItem? CurrentFood;
         public async Task<IActionResult> OnGet(string name)
         {
             using (StreamWriter sw = new("log.txt", append: true))
