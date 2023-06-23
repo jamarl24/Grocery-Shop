@@ -9,13 +9,19 @@ namespace Grocer.Pages
         [BindProperty]
         public int Rating { get; set; }
         [BindProperty]
-        public string Feedback { get; set; }
+        public string? Feedback { get; set; }
         public List<GroceryItem> Foods = Inventory.ToList(); 
 
 
         public void OnGet()
         {
 
+        }
+
+        public void OnPost(string feedback)
+        {
+            using StreamWriter sw = new("feedback.txt", append: true);
+            sw.WriteLine($"{feedback}-{DateTime.Now}");
         }
     }
 }
